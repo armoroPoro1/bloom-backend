@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "runtime": "v24.22.1",
+  "liveness": 200,
+  "readiness_before_migrations": 503,
+  "readiness_after_migrations": 200,
+  "article_filters": 200,
+  "actual_server_entrypoint": true,
+  "automatic_local_mail": true,
+  "automatic_upload_deletion": true,
+  "durable_mail_ack_after_restart": true,
+  "graceful_sigterm_before_migrations": {
+    "code": 0,
+    "signal": null
+  },
+  "graceful_sigterm_after_jobs": {
+    "code": 0,
+    "signal": null
+  },
+  "external_mail_sent": false
+}

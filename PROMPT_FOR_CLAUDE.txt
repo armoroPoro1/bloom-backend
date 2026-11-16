@@ -1,0 +1,19 @@
+ทำ integration โครงการ Bloom โดยเชื่อม React frontend สีชมพูเดิมเข้ากับ Node.js + TypeScript backend ใน ZIP นี้ให้ครบระบบ และทดสอบการใช้งานจริงผ่าน browser
+
+เริ่มอ่าน CLAUDE_INTEGRATION.md เป็นเอกสารหลัก จากนั้นอ่าน CLAUDE.md, README.md, docs/FRONTEND_FILE_MAP.md, docs/FRONTEND_INTEGRATION_PLAN.md และ docs/INTEGRATION_ACCEPTANCE.md ใช้ docs/openapi.json, คู่มือแต่ละโมดูล และ handler/tests ตรวจ request/response จริง
+
+ZIP นี้เป็น Node server รุ่น 1.2.0 พร้อม source ทั้งหมด ส่วน React ให้ใช้ Bloom-Frontend-Claude-Handoff.zip หรือ frontend repository ที่ฉันส่งให้ หากยังไม่มี source หน้าบ้านจริง ให้ตรวจ workspace ก่อนแล้วระบุสิ่งที่ขาด โดยรักษาโครงการเดิมและงานล่าสุดของผู้ใช้
+
+รักษาธีมชมพู assets และ responsive flow เชื่อมทั้งลูกค้า ผู้ขาย แอดมิน และ wellness/CMS ตามคำอธิบายกับ Context Diagram เดิม ผู้ขายซื้อสินค้าได้และร้านต้องให้ admin อนุมัติ ขอบเขตไม่รวมฟีเจอร์ AI จากภาพธีม
+
+เริ่มจาก baseline ทั้งสองโครงการ แล้วลงมือทำ API client, auth และ DTO เชื่อมทุกหน้าจนจบ แก้ call site ที่เดิมรอผล synchronous ให้ await ก่อนแจ้งสำเร็จ ใช้ UUID และเงินหน่วยสตางค์จาก server ยกเลิก demo role authority ใน API mode และแสดง error หาก API ขัดข้องแทนการสร้าง local orders
+
+ทำ single-flight refresh โดยใช้ token ใน memory ตามนโยบายเริ่มต้นของคู่มือ; reload/แท็บใหม่ให้ login ใหม่ ล้าง private cache เมื่อ logout/เปลี่ยนบัญชี รองรับ reset-password และ verify-email ที่ใช้ pathname พร้อม fragment token ก่อนเข้า hash navigation เดิม
+
+ซื้อสินค้าต้องใช้ server quote และ Idempotency-Key สำหรับ checkout ตาม body เดิม รองรับคำสั่งซื้อแยกร้าน หลักฐานที่ถูกปฏิเสธ/ส่งใหม่/ประวัติ no_charge การหมดอายุ ยกเลิก บันทึกคืนเงิน จัดส่ง และรีวิวตามสิทธิ์จริง รูปส่วนตัวใช้ authenticated Blob รองรับ upload DELETE ทั้ง 200/202 และเชื่อม wellness ซึ่งมี localStorage แยกด้วย
+
+แก้ backend เฉพาะจุดจำเป็นต่อ integration รักษา migrations 001–006 เดิม เพิ่ม migration ใหม่หากจำเป็น และรักษาข้อมูลเดิม งาน local นี้ใช้ PGlite/SQL กับ development mail ได้ จึงทำให้จบโดยไม่ต้องเปิดบริการหรือ deploy จริง ระบุสถานะการเชื่อมธนาคาร/ขนส่ง/SMTP ตามที่ทำจริงและไม่ใส่ credentials สมมติ
+
+ทดสอบตาม docs/INTEGRATION_ACCEPTANCE.md พร้อม mobile/tablet/desktop ระบุผล backend/frontend/browser แยกกัน เทส backend 85 ที่แนบเป็น baseline ไม่ใช่หลักฐานว่า integration สำเร็จแล้ว ส่ง source ที่เชื่อมแล้ว วิธีรัน environment ตัวอย่าง และ docs/INTEGRATION_REPORT.md พร้อมผลที่สังเกตจริง
+
+ลงมือทำจนจบตามขอบเขต ใช้ดุลยพินิจแก้รายละเอียด implementation ที่จำเป็น ไม่หยุดเพียงเสนอแผน และถามเฉพาะเมื่อขาด source หรือข้อมูลจำเป็นจริงที่ไม่มีใน workspace

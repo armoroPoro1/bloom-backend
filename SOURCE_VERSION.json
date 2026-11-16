@@ -1,0 +1,100 @@
+{
+  "project": "Bloom Health & Wellness Backend",
+  "package_version": "1.2.0",
+  "exported_at_utc": "2026-11-14T14:10:59.492020+00:00",
+  "frontend_reference": {
+    "filename": "Bloom-Frontend-Claude-Handoff.zip",
+    "commit": "563a659eee0e25cdb8b1a21516345b2fcccea05d",
+    "modified": false,
+    "integrated": false
+  },
+  "runtime": "Node.js v24.22.1",
+  "api_operations": 165,
+  "api_paths": 123,
+  "application_tables": 37,
+  "migrations": 6,
+  "verification": {
+    "pglite": {
+      "passed": 85,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 137129.843713
+    },
+    "postgresql": {
+      "version": "17.11",
+      "passed": 85,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 78661.928859,
+      "scope": "Shared API, concurrency, background and populated legacy upgrade fixtures used native PostgreSQL; dedicated file-persistence fixture remains PGlite",
+      "native_populated_legacy_upgrade": "001–004 to 001–006 passed",
+      "residual_test_schemas": 0,
+      "temporary_server_stopped": true
+    },
+    "typecheck": "passed",
+    "typescript_build": "passed",
+    "npm_ci": "passed",
+    "compiled_http_smoke": {
+      "status": "passed",
+      "runtime": "v24.22.1",
+      "liveness": 200,
+      "readiness_before_migrations": 503,
+      "readiness_after_migrations": 200,
+      "article_filters": 200,
+      "actual_server_entrypoint": true,
+      "automatic_local_mail": true,
+      "automatic_upload_deletion": true,
+      "durable_mail_ack_after_restart": true,
+      "graceful_sigterm_before_migrations": {
+        "code": 0,
+        "signal": null
+      },
+      "graceful_sigterm_after_jobs": {
+        "code": 0,
+        "signal": null
+      },
+      "external_mail_sent": false
+    },
+    "openapi_generation": "passed",
+    "generated_api_index_parity": true,
+    "production_dependency_audit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "frontend_worktree_unchanged": true,
+    "tested_source_byte_match": true,
+    "frozen_source_files": 52
+  },
+  "external_integrations": {
+    "frontend": false,
+    "payment_gateway": false,
+    "courier": false,
+    "smtp_account": false,
+    "hosted_database": false,
+    "deployment": false
+  },
+  "previous_release": "1.1.0",
+  "original_migrations_unchanged": "001–005",
+  "dependency_versions_changed": false,
+  "handoff_revision": "integration-guide-1",
+  "documentation_update": {
+    "entrypoint": "CLAUDE_INTEGRATION.md",
+    "source_map": "docs/FRONTEND_FILE_MAP.md",
+    "acceptance_checklist": "docs/INTEGRATION_ACCEPTANCE.md",
+    "planned_acceptance_cases": 67,
+    "frontend_source_included": false,
+    "integration_performed": false,
+    "runtime_scripts_tests_migrations_unchanged": true,
+    "baseline_runtime_files_compared": 52,
+    "baseline_tests_retained_not_rerun": true,
+    "baseline_archive_sha256": "80a821e3e54d5d265a308a053854c0b3bf371a25dadafac19466b81317bb3615",
+    "relative_document_links_validated": 39,
+    "explicit_method_route_references_validated": 80
+  }
+}

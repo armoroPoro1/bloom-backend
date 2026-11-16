@@ -1,0 +1,47 @@
+{
+  "name": "bloom-healthshop-backend",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node --import tsx --watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/src/server.js",
+    "test": "node --import tsx --test --test-concurrency=1 tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node --import tsx scripts/migrate.ts",
+    "db:seed": "node --import tsx scripts/seed.ts",
+    "admin:create": "node --import tsx scripts/create-admin.ts",
+    "mail:worker": "node --import tsx scripts/mail-worker.ts",
+    "openapi": "node --import tsx scripts/export-openapi.ts",
+    "maintenance": "node --import tsx scripts/maintenance.ts",
+    "format": "prettier --write src scripts tests docs/*.md README.md CLAUDE.md",
+    "format:check": "prettier --check src scripts tests docs/*.md README.md CLAUDE.md"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.3.13",
+    "@fastify/cors": "^11.1.0",
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/multipart": "^9.2.1",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/swagger": "^9.5.1",
+    "@fastify/swagger-ui": "^6.1.4",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.2",
+    "nodemailer": "^10.5.0",
+    "pg": "^8.16.3",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/nodemailer": "^7.0.3",
+    "@types/pg": "^8.15.6",
+    "prettier": "^3.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "~5.9.3"
+  }
+}

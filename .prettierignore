@@ -1,0 +1,6 @@
+node_modules
+dist
+var
+package-lock.json
+docs/openapi.json
+
