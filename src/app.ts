@@ -50,7 +50,8 @@ export async function buildApp(options: { db: Database; config: Config }) {
   app.decorateRequest('actor', null);
   await app.register(helmet);
   await app.register(cors, {
-    origin: (origin, cb) => cb(null, !origin || config.allowedOrigins.includes(origin)),
+    origin: (origin, cb) =>
+      cb(null, !origin || config.allowedOrigins.includes('*') || config.allowedOrigins.includes(origin)),
     credentials: false,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Idempotency-Key'],

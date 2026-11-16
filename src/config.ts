@@ -102,6 +102,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
       );
   }
   for (const origin of origins) {
+    if (origin === '*') continue;
     const u = new URL(origin);
     if (u.origin !== origin || !['http:', 'https:'].includes(u.protocol))
       throw new Error('CORS_ORIGINS must contain exact HTTP(S) origins');
